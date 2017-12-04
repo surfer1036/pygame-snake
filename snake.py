@@ -1,6 +1,6 @@
 '''
 Snake game.
-Authors:
+Authors: hh
 <insert the names of your teammates here>
 '''
 
