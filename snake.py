@@ -1,6 +1,6 @@
 '''
 Snake game.
-Authors: Quinlan Kimble-Brown, Zipporah Bright, Errol Stoute
+Authors: 
 <insert the names of your teammates here>
 '''
 
@@ -61,7 +61,7 @@ def create_food_position():
     """
     x = random.randint(0, GRID_WIDTH -1)
     y = random.randint(0, GRID_HEIGHT-1)                   
-    return
+    return x, y
     
 def snake_ate_food(snake, food):    
     """Returns whether food was eaten by the snake.
