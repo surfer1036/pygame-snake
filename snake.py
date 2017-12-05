@@ -1,7 +1,7 @@
 '''
 Snake game.
-Authors: 
-<insert the names of your teammates here>
+Authors:
+Quinlan Kimble-Brown, Zipporah Bright, Errol Stoute
 '''
 
 import pygame
@@ -48,10 +48,10 @@ def get_direction(previous_direction, event_key):
         return DIRECTION_LEFT
     elif event_key == pygame.K_UP:
         return DIRECTION_UP
-    elif event_key == pygame.K_DOWN:
-        return DIRECTION_DOWN
     elif event_key == pygame.K_RIGHT:
         return DIRECTION_RIGHT
+    elif event_key == pygame.K_DOWN:
+        return DIRECTION_DOWN
     return previous_direction
 
 def create_food_position():
@@ -60,16 +60,17 @@ def create_food_position():
     The second element is the y position. Must be an int between 0 and GRID_HEIGHT - 1, inclusively.
     """
     x = random.randint(0, GRID_WIDTH -1)
-    y = random.randint(0, GRID_HEIGHT-1)                   
-    return x, y
-    
-def snake_ate_food(snake, food):    
+    y = random.randint(0, GRID_HEIGHT-1) 
+    return x,y
+
+def snake_ate_food(snake, food):
     """Returns whether food was eaten by the snake.
     snake - list of 2-tuples representing the positions of each snake segment
     food - 2-tuple representing the position in the grid of the food
     This function should return True if the head of the snake is in the same position as food.
     """
-                          
+    if snake[0] == food:
+        return True        
     return False
 
 def snake_ran_out_of_bounds(snake):
@@ -77,6 +78,14 @@ def snake_ran_out_of_bounds(snake):
     snake - list of 2-tuples representing the positions of each snake segment
     Note that the grid is GRID_WIDTH cells wide and GRID_HEIGHT cells high.
     """
+    if snake[0][0] < 0:
+        return True
+    if snake[0][0] > 29:
+        return True
+    if snake[0][1] < 0:
+        return True
+    if snake[0][1] > 29:
+        return True
     return False
 
 def snake_intersected_body(snake):
@@ -85,14 +94,19 @@ def snake_intersected_body(snake):
     The snake ran into itself if the position of the head is the same as the position
     of any of its body segments.
     """
+    '''if snake head = snake body tuple. looping through the body & head '''
+    for body in range(1, len(snake)):
+        if snake[0] == body[]:
+            return True       
     return False
-
+    
 def get_score(snake):
     """Returns the current score of the game.
     snake - list of 2-tuples representing the positions of each snake segment
     The user earns 10 points for each of the segments in the snake.
     For example, if the snake has 25 segments, the score is 250.
     """
+    ''' len of the snake body gives 10 points'''
     return 0
 
 def get_game_over_text(score):
@@ -100,7 +114,8 @@ def get_game_over_text(score):
     This text should contain 'Game Over' as well as the score.
     score - integer representing the current score of the game.
     """
-    return 'Game Over. '
+    
+    return 'Game Over.'
 
 def get_snake_speed(snake):
     """Return the number of cells the snake should travel in one second.
