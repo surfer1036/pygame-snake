@@ -94,9 +94,9 @@ def snake_intersected_body(snake):
     The snake ran into itself if the position of the head is the same as the position
     of any of its body segments.
     """
-    '''if snake head = snake body tuple. looping through the body & head '''
+    '''if snake head = snake body tuple. looping through the body & head. for each of the segment, cheack if snake at the body is = to head o snake '''
     for body in range(1, len(snake)):
-        if snake[0] == body[]:
+        if snake[body] == snake[0]: 
             return True       
     return False
     
@@ -107,7 +107,9 @@ def get_score(snake):
     For example, if the snake has 25 segments, the score is 250.
     """
     ''' len of the snake body gives 10 points'''
-    return 0
+    if len(snake) == 0:
+        return 0
+    return len(snake) * 10
 
 def get_game_over_text(score):
     """Returns the text to draw on the screen after the game is over.
