@@ -99,7 +99,7 @@ def snake_intersected_body(snake):
         if snake[body] == snake[0]: 
             return True       
     return False
-    
+     
 def get_score(snake):
     """Returns the current score of the game.
     snake - list of 2-tuples representing the positions of each snake segment
@@ -117,7 +117,7 @@ def get_game_over_text(score):
     score - integer representing the current score of the game.
     """
     
-    return 'Game Over.'
+    return 'Game Over. ' + str(score) 
 
 def get_snake_speed(snake):
     """Return the number of cells the snake should travel in one second.
@@ -125,7 +125,13 @@ def get_snake_speed(snake):
     The speed at the beginning of the game should be 5. Once the snake has eaten 10 pieces of food,
     the speed of the game should increase (by how much is up to you).
     """
+    
+    if len(snake) >= 20:
+        return 20
+    elif len(snake) >= 15:
+        return 10
     return 5
+    
 
 def move_snake(snake, direction, food):
     """Moves the snake one space in the direction specified and returns whether food was eaten.
